@@ -1,0 +1,4 @@
+# Nixpacks configuration for flashservices78.fr
+# Override install to allow lockfile regeneration when deps change
+[phases.install]
+cmds = ["pnpm install --no-frozen-lockfile"]
