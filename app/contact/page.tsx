@@ -56,10 +56,11 @@ export default function ContactPage() {
         })
       }
     } catch (error) {
+      console.error('Contact form error:', error)
       toast({
-        title: "Succès!",
-        description: 'Message envoyé avec succès',
-        variant: "default",
+        title: "Erreur réseau",
+        description: 'Impossible de contacter le serveur. Veuillez réessayer.',
+        variant: "destructive",
       })
     } finally {
       setIsLoading(false)

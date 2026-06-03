@@ -39,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <Header />
         <ConditionalHomeButton />

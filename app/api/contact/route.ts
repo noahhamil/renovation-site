@@ -1,7 +1,27 @@
 import nodemailer from 'nodemailer';
 import { NextRequest, NextResponse } from 'next/server';
+import { rateLimit } from '@/lib/rate-limit';
+import { escapeHtml } from '@/lib/html-escape';
+
+function getClientIp(request: NextRequest): string {
+  const forwarded = request.headers.get('x-forwarded-for');
+  if (forwarded) return forwarded.split(',')[0].trim();
+  const realIp = request.headers.get('x-real-ip');
+  if (realIp) return realIp;
+  return '127.0.0.1';
+}
 
 export async function POST(request: NextRequest) {
+  // ── Rate limiting ──
+  const ip = getClientIp(request);
+  const rl = rateLimit(ip, { maxRequests: 5, windowMs: 60_000 });
+  if (!rl.ok) {
+    return NextResponse.json(
+      { error: 'Trop de requêtes. Veuillez réessayer dans une minute.' },
+      { status: 429 }
+    );
+  }
+
   try {
     const { firstName, lastName, email, phone, project, message } = await request.json();
 
@@ -12,6 +32,16 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Sanitize all user input
+    const safe = {
+      firstName: escapeHtml(firstName),
+      lastName: escapeHtml(lastName),
+      email: escapeHtml(email),
+      phone: escapeHtml(phone || ''),
+      project: escapeHtml(project),
+      message: escapeHtml(message || ''),
+    };
 
     // Create transporter
     const transporter = nodemailer.createTransport({
@@ -24,7 +54,7 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Email content
+    // Email content (user input is now HTML-escaped)
     const mailOptions = {
       from: `"Flash Services" <${process.env.SMTP_USER}>`,
       to: 'contact@flashservices78.fr',
@@ -33,12 +63,12 @@ export async function POST(request: NextRequest) {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #2563eb;">Nouveau message de contact</h2>
           <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <p><strong>Nom:</strong> ${firstName} ${lastName}</p>
-            <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-            <p><strong>Téléphone:</strong> ${phone || 'Non fourni'}</p>
-            <p><strong>Type de projet:</strong> ${project}</p>
+            <p><strong>Nom:</strong> ${safe.firstName} ${safe.lastName}</p>
+            <p><strong>Email:</strong> ${safe.email}</p>
+            <p><strong>Téléphone:</strong> ${safe.phone || 'Non fourni'}</p>
+            <p><strong>Type de projet:</strong> ${safe.project}</p>
             <p><strong>Message:</strong></p>
-            <p style="background-color: white; padding: 15px; border-radius: 5px;">${message || 'Aucun message'}</p>
+            <p style="background-color: white; padding: 15px; border-radius: 5px;">${safe.message || 'Aucun message'}</p>
           </div>
           <hr style="margin: 20px 0; border: none; border-top: 1px solid #e2e8f0;">
           <p style="color: #64748b; font-size: 14px;">
@@ -46,7 +76,7 @@ export async function POST(request: NextRequest) {
           </p>
         </div>
       `,
-      replyTo: email,
+      replyTo: safe.email,
     };
 
     // Send email
