@@ -25,3 +25,9 @@ services:
           memory: 256M
         reservations:
           memory: 128M
+    networks:
+      - dokploy-network
+
+networks:
+  dokploy-network:
+    external: true
