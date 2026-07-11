@@ -29,8 +29,3 @@ services:
           memory: 256M
         reservations:
           memory: 128M
-
-networks:
-  default:
-    name: traefik-public
-    external: true
