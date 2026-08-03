@@ -82,10 +82,11 @@ export default function DevisTravauxPage() {
         })
       }
     } catch (error) {
+      console.error('Devis form error:', error)
       toast({
-        title: "Succès!",
-        description: 'Demande de devis envoyée avec succès',
-        variant: "default",
+        title: "Erreur réseau",
+        description: 'Impossible de contacter le serveur. Veuillez réessayer.',
+        variant: "destructive",
       })
     } finally {
       setIsLoading(false)
