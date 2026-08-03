@@ -1,12 +1,13 @@
 
 import { ModernHeroSection } from "@/components/hero-section"
 import { ModernPromisesSection } from "@/components/promises-section"
+import { HowItWorks } from "@/components/how-it-works"
 import { EnergySection } from "@/components/energy-section"
 import { FeaturesSection } from "@/components/features-section"
 import { ModernStatsSection } from "@/components/stats-section"
 import { CTASection } from "@/components/cta-section"
 import ServiceAreas from "@/components/ServiceAreas"
-import MobileAppShowcase from "@/components/MobileAppShowcase" // Import the MobileAppShowcase component
+import MobileAppShowcase from "@/components/MobileAppShowcase"
 
 export default function HomePage() {
   return (
@@ -14,14 +15,15 @@ export default function HomePage() {
       <main>
         <ModernHeroSection />
         <ModernPromisesSection />
+        <HowItWorks />
         <EnergySection />
         <FeaturesSection />
         <ModernStatsSection />
         <ServiceAreas />
         <CTASection />
-        <MobileAppShowcase /> {/* Integrated MobileAppShowcase */}
-        {/* <component>per</component> */}
+        <MobileAppShowcase />
       </main>
     </div>
   )
 }
+

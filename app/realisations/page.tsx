@@ -191,25 +191,25 @@ export default function RealisationsPage() {
   }, [displayedProjects.length])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 relative overflow-hidden transition-colors duration-300">
       {/* Animated gradient orbs */}
-      <div 
-        className="absolute w-[800px] h-[800px] rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 blur-3xl animate-pulse"
+      <div
+        className="absolute w-[800px] h-[800px] rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 dark:from-cyan-500/20 dark:to-blue-500/20 blur-3xl animate-pulse"
         style={{
           top: '10%',
           left: '10%',
           animation: 'float 20s ease-in-out infinite',
         }}
       />
-      <div 
-        className="absolute w-[600px] h-[600px] rounded-full bg-gradient-to-r from-sky-500/20 to-cyan-500/20 blur-3xl animate-pulse"
+      <div
+        className="absolute w-[600px] h-[600px] rounded-full bg-gradient-to-r from-sky-500/10 to-cyan-500/10 dark:from-sky-500/20 dark:to-cyan-500/20 blur-3xl animate-pulse"
         style={{
           bottom: '10%',
           right: '10%',
           animation: 'float 15s ease-in-out infinite reverse',
         }}
       />
-      
+
       {/* Mouse follower gradient */}
       <div
         className="pointer-events-none fixed w-96 h-96 rounded-full opacity-20 blur-3xl transition-all duration-300 ease-out"
@@ -234,24 +234,23 @@ export default function RealisationsPage() {
             {/* Header with stunning animation */}
             <div
               ref={headerRef}
-              className={`text-center space-y-6 mb-20 transition-all duration-1000 ${
-                headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-              }`}
+              className={`text-center space-y-6 mb-20 transition-all duration-1000 ${headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                }`}
             >
               <div className="inline-block">
                 <Badge className="px-6 py-2 text-sm font-semibold bg-gradient-to-r from-sky-500 to-cyan-500 border-0 text-white shadow-lg shadow-sky-500/50 animate-pulse">
                   Portfolio
                 </Badge>
               </div>
-              
-              <h1 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-sky-200 to-cyan-200 leading-tight animate-fade-in">
+
+              <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:via-sky-200 dark:to-cyan-200 leading-tight animate-fade-in">
                 Nos Réalisations
-                <span className="block text-3xl md:text-5xl mt-4 bg-gradient-to-r from-sky-400 to-cyan-400 bg-clip-text">
+                <span className="block text-3xl md:text-5xl mt-4 bg-gradient-to-r from-sky-600 to-cyan-600 dark:from-sky-400 dark:to-cyan-400 bg-clip-text text-transparent">
                   D'Exception
                 </span>
               </h1>
-              
-              <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">
+
+              <p className="text-lg md:text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">
                 Découvrez nos projets les plus prestigieux qui incarnent l'excellence,
                 <br className="hidden md:block" />
                 l'innovation et le savoir-faire artisanal français.
@@ -272,14 +271,13 @@ export default function RealisationsPage() {
                   key={index}
                   href={`/realisations/${project.slug}`}
                   ref={(el) => { itemRefs.current[index] = el }}
-                  className={`group transition-all duration-700 block ${
-                    visibleItems[index] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-                  }`}
+                  className={`group transition-all duration-700 block ${visibleItems[index] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                    }`}
                   style={{ transitionDelay: `${index * 150}ms` }}
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
-                  <Card className="overflow-hidden bg-gradient-to-br from-slate-900/90 to-slate-800/90 border-slate-700/50 backdrop-blur-sm hover:border-sky-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-sky-500/20 hover:-translate-y-2 cursor-pointer">
+                  <Card className="overflow-hidden bg-white dark:bg-gradient-to-br dark:from-slate-900/90 dark:to-slate-800/90 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm hover:border-sky-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-sky-500/20 hover:-translate-y-2 cursor-pointer h-full">
                     {/* Image container with overlay effects */}
                     <div className="relative aspect-video overflow-hidden">
                       <img
@@ -287,13 +285,13 @@ export default function RealisationsPage() {
                         alt={project.title}
                         className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
                       />
-                      
+
                       {/* Gradient overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
-                      
+
                       {/* Animated corner accent */}
                       <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-sky-500/30 to-transparent transition-all duration-500 ${hoveredCard === index ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}></div>
-                      
+
                       {/* Shine effect on hover */}
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
@@ -303,12 +301,12 @@ export default function RealisationsPage() {
                     <CardContent className="p-6 space-y-4 relative">
                       {/* Glowing line */}
                       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-sky-500 via-cyan-500 to-sky-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                      
+
                       <div className="flex items-center justify-between">
                         <Badge className="px-3 py-1 bg-gradient-to-r from-sky-600 to-cyan-600 text-white border-0 shadow-lg shadow-sky-500/30 group-hover:shadow-sky-500/50 transition-all duration-300">
                           {project.type}
                         </Badge>
-                        <span className="text-sm text-gray-400 font-medium flex items-center gap-2">
+                        <span className="text-sm text-slate-500 dark:text-gray-400 font-medium flex items-center gap-2">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
@@ -317,10 +315,10 @@ export default function RealisationsPage() {
                       </div>
 
                       <div>
-                        <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-sky-400 group-hover:to-cyan-400 transition-all duration-300">
+                        <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-all duration-300">
                           {project.title}
                         </h3>
-                        <p className="text-sm text-sky-300 font-medium flex items-center gap-2">
+                        <p className="text-sm text-sky-600 dark:text-sky-300 font-medium flex items-center gap-2">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -329,13 +327,13 @@ export default function RealisationsPage() {
                         </p>
                       </div>
 
-                      <p className="text-gray-300 leading-relaxed line-clamp-3">
+                      <p className="text-slate-600 dark:text-gray-300 leading-relaxed line-clamp-3">
                         {project.description}
                       </p>
 
                       {/* View project button */}
                       <div className="pt-2">
-                        <button className="w-full py-3 px-6 bg-gradient-to-r from-sky-600 to-cyan-600 text-white font-semibold rounded-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:shadow-lg hover:shadow-sky-500/50 flex items-center justify-center gap-2">
+                        <button className="w-full py-3 px-6 bg-slate-100 dark:bg-white/10 text-slate-900 dark:text-white font-semibold rounded-lg group-hover:bg-gradient-to-r group-hover:from-sky-600 group-hover:to-cyan-600 group-hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-sky-500/50 flex items-center justify-center gap-2">
                           Voir le projet
                           <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -352,8 +350,8 @@ export default function RealisationsPage() {
             <div className="text-center mt-24">
               {hasMoreProjects && !showAll && (
                 <div className="inline-block p-1 rounded-2xl bg-gradient-to-r from-sky-600 via-cyan-600 to-sky-600 animate-gradient">
-                  <div className="bg-slate-900 rounded-2xl px-12 py-8">
-                    <p className="text-gray-300 mb-6 text-lg">
+                  <div className="bg-white dark:bg-slate-900 rounded-2xl px-12 py-8">
+                    <p className="text-slate-600 dark:text-gray-300 mb-6 text-lg">
                       Vous avez un projet en tête ?
                     </p>
                     <Button
@@ -371,11 +369,11 @@ export default function RealisationsPage() {
                   </div>
                 </div>
               )}
-              
+
               {showAll && (
                 <div className="inline-block p-1 rounded-2xl bg-gradient-to-r from-sky-600 via-cyan-600 to-sky-600 animate-gradient">
-                  <div className="bg-slate-900 rounded-2xl px-12 py-8">
-                    <p className="text-gray-300 mb-6 text-lg">
+                  <div className="bg-white dark:bg-slate-900 rounded-2xl px-12 py-8">
+                    <p className="text-slate-600 dark:text-gray-300 mb-6 text-lg">
                       Un projet de rénovation en tête ?
                     </p>
                     <a href="/contact">

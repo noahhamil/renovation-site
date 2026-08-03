@@ -6,9 +6,11 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  // Keep images unoptimized for faster dev builds (optimized in production)
   images: {
     unoptimized: true,
   },
 }
 
 export default nextConfig
+

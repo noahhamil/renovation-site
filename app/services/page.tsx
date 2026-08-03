@@ -96,19 +96,18 @@ export default function ServicesPage() {
   }, [])
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
       <Header />
       <main>
         <section className="py-16 md:py-24">
           <div className="container px-4">
             <div
               ref={headerRef}
-              className={`text-center space-y-4 mb-16 transition-all duration-1000 ${
-                headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`text-center space-y-4 mb-16 transition-all duration-1000 ${headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
-              <h1 className="text-4xl md:text-5xl font-bold text-balance">Nos Services</h1>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <h1 className="text-4xl md:text-5xl font-bold text-balance text-slate-900 dark:text-white">Nos Services</h1>
+              <p className="text-lg text-slate-600 dark:text-muted-foreground max-w-2xl mx-auto">
                 Flash Services 78 vous accompagne dans tous vos projets de rénovation avec une expertise reconnue dans
                 tous les corps d'état.
               </p>
@@ -118,10 +117,9 @@ export default function ServicesPage() {
               {services.map((service, index) => (
                 <Card
                   key={index}
-                  ref={(el) => (itemRefs.current[index] = el)}
-                  className={`h-full hover:shadow-lg transition-all duration-700 hover:scale-105 ${
-                    visibleItems[index] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
+                  ref={(el) => { itemRefs.current[index] = el }}
+                  className={`h-full hover:shadow-lg transition-all duration-700 hover:scale-105 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 ${visibleItems[index] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    }`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   <CardHeader>
@@ -129,16 +127,16 @@ export default function ServicesPage() {
                       <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                         {service.icon}
                       </div>
-                      <CardTitle className="text-xl">{service.title}</CardTitle>
+                      <CardTitle className="text-xl text-slate-900 dark:text-white">{service.title}</CardTitle>
                     </div>
-                    <CardDescription className="text-base">{service.description}</CardDescription>
+                    <CardDescription className="text-base text-slate-600 dark:text-muted-foreground">{service.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2">
                       {service.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center space-x-2">
                           <div className="h-2 w-2 rounded-full bg-primary"></div>
-                          <span className="text-sm">{feature}</span>
+                          <span className="text-sm text-slate-700 dark:text-slate-300">{feature}</span>
                         </li>
                       ))}
                     </ul>

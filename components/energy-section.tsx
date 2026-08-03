@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
+import { motion, px } from "framer-motion"
 
 export function EnergySection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -23,11 +23,10 @@ export function EnergySection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 md:py-32 bg-gradient-to-r from-indigo-950 via-blue-950 to-purple-950 overflow-hidden"
+      className="relative py-12 md:py-16 bg-white dark:bg-slate-900 overflow-hidden transition-colors duration-300"
     >
       {/* Floating decorative blobs */}
-      <div className="absolute -top-20 -left-20 w-72 h-72 bg-blue-500/30 rounded-full blur-3xl animate-blob"></div>
-      <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-purple-500/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+      {/* Removed blobs */}
 
       <div className="container px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -39,8 +38,9 @@ export function EnergySection() {
           >
             <img
               src="/enr.png"
+
               alt="Efficacité énergétique"
-              className="w-full h-auto rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500"
+              className="w-3/4 max-w-md mx-auto h-auto rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500"
             />
           </motion.div>
 
@@ -50,15 +50,15 @@ export function EnergySection() {
             transition={{ duration: 1 }}
             className="space-y-6"
           >
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white drop-shadow-lg">
               Votre partenaire idéal pour allier travaux et rénovation énergétique
             </h2>
-            <p className="text-gray-300 text-lg md:text-xl leading-relaxed drop-shadow-sm">
-              Gagnez en confort thermique tout en réduisant vos factures !  
+            <p className="text-slate-600 dark:text-gray-300 text-lg md:text-xl leading-relaxed drop-shadow-sm">
+              Gagnez en confort thermique tout en réduisant vos factures !
               Profitez de solutions innovantes et éco-responsables pour vos projets de rénovation.
             </p>
             <Link href="/renovation-energetique">
-              <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-4 rounded-xl shadow-2xl hover:scale-105 transition-all duration-500">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl shadow-2xl hover:scale-105 transition-all duration-500">
                 En savoir plus
               </Button>
             </Link>

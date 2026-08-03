@@ -329,16 +329,16 @@ const projectsData: Project[] = [
 export default function ProjectDetailPage() {
   const params = useParams()
   const slug = params?.slug as string || 'renovation-appartement-haussmannien'
-  
+
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [scrollProgress, setScrollProgress] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
-  
+
   const project = projectsData.find(p => p.slug === slug) || projectsData[0]
 
   useEffect(() => {
     setIsVisible(true)
-    
+
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
     }
@@ -351,7 +351,7 @@ export default function ProjectDetailPage() {
 
     window.addEventListener('mousemove', handleMouseMove)
     window.addEventListener('scroll', handleScroll)
-    
+
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('scroll', handleScroll)
@@ -359,10 +359,10 @@ export default function ProjectDetailPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 relative overflow-hidden transition-colors duration-300">
       {/* Progress bar */}
-      <div className="fixed top-0 left-0 right-0 h-1 bg-slate-800/50 z-50 backdrop-blur-sm">
-        <div 
+      <div className="fixed top-0 left-0 right-0 h-1 bg-slate-200/50 dark:bg-slate-800/50 z-50 backdrop-blur-sm">
+        <div
           className="h-full bg-gradient-to-r from-sky-500 via-cyan-500 to-sky-500 transition-all duration-300"
           style={{ width: `${scrollProgress}%` }}
         />
@@ -370,24 +370,24 @@ export default function ProjectDetailPage() {
 
       {/* Animated background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div 
-          className="absolute w-[1000px] h-[1000px] rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 blur-3xl"
+        <div
+          className="absolute w-[1000px] h-[1000px] rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 dark:from-cyan-500/20 dark:to-blue-500/20 blur-3xl"
           style={{
             top: '5%',
             left: '5%',
             animation: 'float 25s ease-in-out infinite',
           }}
         />
-        <div 
-          className="absolute w-[800px] h-[800px] rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 blur-3xl"
+        <div
+          className="absolute w-[800px] h-[800px] rounded-full bg-gradient-to-r from-purple-500/10 to-pink-500/10 dark:from-purple-500/20 dark:to-pink-500/20 blur-3xl"
           style={{
             bottom: '10%',
             right: '5%',
             animation: 'float 20s ease-in-out infinite reverse',
           }}
         />
-        <div 
-          className="absolute w-[600px] h-[600px] rounded-full bg-gradient-to-r from-emerald-500/20 to-teal-500/20 blur-3xl"
+        <div
+          className="absolute w-[600px] h-[600px] rounded-full bg-gradient-to-r from-emerald-500/10 to-teal-500/10 dark:from-emerald-500/20 dark:to-teal-500/20 blur-3xl"
           style={{
             top: '50%',
             left: '50%',
@@ -398,7 +398,7 @@ export default function ProjectDetailPage() {
 
       {/* Mouse follower */}
       <div
-        className="pointer-events-none fixed w-96 h-96 rounded-full opacity-30 blur-3xl transition-all duration-500 ease-out z-10"
+        className="pointer-events-none fixed w-96 h-96 rounded-full opacity-20 dark:opacity-30 blur-3xl transition-all duration-500 ease-out z-10"
         style={{
           background: 'radial-gradient(circle, rgba(34, 211, 238, 0.4) 0%, transparent 70%)',
           left: mousePosition.x - 192,
@@ -426,8 +426,8 @@ export default function ProjectDetailPage() {
             alt={project.title}
             className={`w-full h-full object-cover transition-all duration-2000 ${isVisible ? 'scale-100 opacity-100' : 'scale-110 opacity-0'}`}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/60 to-slate-950"></div>
-          
+          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-slate-50 dark:from-slate-950/80 dark:via-slate-950/60 dark:to-slate-900 transition-colors duration-300"></div>
+
           {/* Animated overlay pattern */}
           <div className="absolute inset-0 opacity-20">
             <div className="absolute inset-0" style={{
@@ -443,11 +443,11 @@ export default function ProjectDetailPage() {
               {project.type}
             </Badge>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-blue-200 leading-tight mb-6">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-cyan-600 to-blue-600 dark:from-white dark:via-cyan-200 dark:to-blue-200 leading-tight mb-6 transition-all duration-300">
               {project.title}
             </h1>
 
-            <div className="flex items-center justify-center gap-4 text-cyan-200 text-xl">
+            <div className="flex items-center justify-center gap-4 text-cyan-600 dark:text-cyan-200 text-xl font-medium">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               </svg>
@@ -459,15 +459,15 @@ export default function ProjectDetailPage() {
               <div className="h-px w-32 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
               <div className="flex gap-2">
                 <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></div>
-                <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" style={{animationDelay: '0.2s'}}></div>
-                <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" style={{animationDelay: '0.4s'}}></div>
+                <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" style={{ animationDelay: '0.4s' }}></div>
               </div>
               <div className="h-px w-32 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
             </div>
 
             {/* Scroll indicator */}
             <div className="pt-12 animate-bounce">
-              <svg className="w-8 h-8 mx-auto text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-8 h-8 mx-auto text-cyan-500 dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
             </div>
@@ -478,7 +478,7 @@ export default function ProjectDetailPage() {
       {/* Stats Bar */}
       <section className="relative z-20 -mt-24">
         <div className="container mx-auto px-4">
-          <div className="bg-gradient-to-r from-slate-900/95 via-blue-900/95 to-slate-900/95 backdrop-blur-xl rounded-3xl border border-cyan-500/30 shadow-2xl shadow-cyan-500/20 p-8">
+          <div className="bg-white/80 dark:bg-slate-900/90 bg-gradient-to-r from-white/90 via-blue-50/90 to-white/90 dark:from-slate-900/95 dark:via-blue-900/95 dark:to-slate-900/95 backdrop-blur-xl rounded-3xl border border-white/20 dark:border-cyan-500/30 shadow-2xl shadow-cyan-500/10 dark:shadow-cyan-500/20 p-8 transition-colors duration-300">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
                 { label: "Surface", value: project.details.surface, icon: "📐" },
@@ -486,18 +486,18 @@ export default function ProjectDetailPage() {
                 { label: "Budget", value: project.details.budget, icon: "💎" },
                 { label: "Année", value: project.details.year, icon: "📅" }
               ].map((stat, index) => (
-                <div 
+                <div
                   key={index}
                   className="text-center group hover:scale-110 transition-all duration-300"
-                  style={{animationDelay: `${index * 100}ms`}}
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="text-4xl mb-3 group-hover:scale-125 transition-transform duration-300">
                     {stat.icon}
                   </div>
-                  <p className="text-sm text-cyan-300 uppercase tracking-wider mb-2 font-semibold">
+                  <p className="text-sm text-cyan-700 dark:text-cyan-300 uppercase tracking-wider mb-2 font-semibold">
                     {stat.label}
                   </p>
-                  <p className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+                  <p className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400">
                     {stat.value}
                   </p>
                 </div>
@@ -514,39 +514,39 @@ export default function ProjectDetailPage() {
             {/* About */}
             <div className="space-y-8">
               <div className="inline-block">
-                <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-cyan-200 mb-2">
+                <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-cyan-600 dark:from-white dark:to-cyan-200 mb-2 transition-all duration-300">
                   À Propos du Projet
                 </h2>
                 <div className="h-1.5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
               </div>
-              
-              <p className="text-xl md:text-2xl text-gray-300 leading-relaxed font-light">
+
+              <p className="text-xl md:text-2xl text-slate-600 dark:text-gray-300 leading-relaxed font-light">
                 {project.description}
               </p>
             </div>
 
             {/* Features */}
             <div className="space-y-8">
-              <h3 className="text-3xl md:text-4xl font-bold text-white">Caractéristiques</h3>
+              <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Caractéristiques</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 {project.features.map((feature, index) => (
-                  <Card 
+                  <Card
                     key={index}
-                    className="group bg-gradient-to-br from-slate-900/90 to-slate-800/90 border-cyan-500/30 backdrop-blur-sm hover:border-cyan-500 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/30 overflow-hidden"
+                    className="group bg-white/50 dark:bg-gradient-to-br dark:from-slate-900/90 dark:to-slate-800/90 border-slate-200 dark:border-cyan-500/30 backdrop-blur-sm hover:border-cyan-500 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/10 dark:hover:shadow-cyan-500/30 overflow-hidden"
                   >
                     <CardContent className="p-6 relative">
                       {/* Animated shine */}
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/5 dark:via-cyan-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                       </div>
-                      
+
                       <div className="flex items-start gap-4">
                         <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-500/50 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
                           <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                           </svg>
                         </div>
-                        <p className="text-gray-200 font-medium text-lg flex-1 pt-2">{feature}</p>
+                        <p className="text-slate-700 dark:text-gray-200 font-medium text-lg flex-1 pt-2">{feature}</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -556,7 +556,7 @@ export default function ProjectDetailPage() {
 
             {/* Gallery */}
             <div className="space-y-8">
-              <h3 className="text-3xl md:text-4xl font-bold text-white">Galerie Photos</h3>
+              <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Galerie Photos</h3>
               <div className="grid md:grid-cols-3 gap-6">
                 {project.gallery.map((img, index) => (
                   <a
@@ -564,7 +564,7 @@ export default function ProjectDetailPage() {
                     href={img}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative aspect-square overflow-hidden rounded-2xl cursor-pointer block"
+                    className="group relative aspect-square overflow-hidden rounded-2xl cursor-pointer block shadow-md hover:shadow-xl transition-all duration-300"
                   >
                     <img
                       src={img}
@@ -572,7 +572,7 @@ export default function ProjectDetailPage() {
                       className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-cyan-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                    
+
                     {/* Zoom icon */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
                       <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
@@ -590,20 +590,20 @@ export default function ProjectDetailPage() {
             </div>
 
             {/* CTA Section */}
-            <div className="relative mt-24 overflow-hidden rounded-3xl">
+            <div className="relative mt-24 overflow-hidden rounded-3xl shadow-xl">
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 animate-gradient"></div>
-              <div className="relative bg-gradient-to-br from-slate-900/95 via-blue-900/95 to-slate-900/95 backdrop-blur-xl m-[2px] rounded-3xl p-12 md:p-16 text-center">
+              <div className="relative bg-white/90 dark:bg-gradient-to-br dark:from-slate-900/95 dark:via-blue-900/95 dark:to-slate-900/95 backdrop-blur-xl m-[2px] rounded-3xl p-12 md:p-16 text-center transition-colors duration-300">
                 <div className="max-w-3xl mx-auto space-y-8">
-                  <h3 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-blue-200">
+                  <h3 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-cyan-600 to-blue-600 dark:from-white dark:via-cyan-200 dark:to-blue-200">
                     Un Projet Similaire en Tête ?
                   </h3>
-                  <p className="text-xl text-gray-300">
+                  <p className="text-xl text-slate-600 dark:text-gray-300">
                     Transformons ensemble votre vision en réalité exceptionnelle
                   </p>
-                  
+
                   <div className="flex flex-col sm:flex-row gap-6 justify-center pt-4">
-                    <Button 
-                      size="lg" 
+                    <Button
+                      size="lg"
                       className="group bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white px-10 py-7 text-lg font-bold rounded-2xl shadow-2xl shadow-cyan-500/50 hover:shadow-cyan-500/70 hover:scale-105 transition-all duration-300 border-0"
                     >
                       <span className="flex items-center gap-3">
@@ -613,10 +613,10 @@ export default function ProjectDetailPage() {
                         </svg>
                       </span>
                     </Button>
-                    
-                    <Button 
+
+                    <Button
                       size="lg"
-                      className="group bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-10 py-7 text-lg font-bold rounded-2xl border-2 border-white/30 hover:border-white/50 hover:scale-105 transition-all duration-300"
+                      className="group bg-white/10 backdrop-blur-sm hover:bg-slate-100 dark:hover:bg-white/20 text-slate-900 dark:text-white px-10 py-7 text-lg font-bold rounded-2xl border-2 border-slate-200 dark:border-white/30 hover:border-slate-400 dark:hover:border-white/50 hover:scale-105 transition-all duration-300"
                     >
                       <span className="flex items-center gap-3">
                         Voir Tous les Projets

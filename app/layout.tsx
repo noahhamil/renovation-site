@@ -9,6 +9,7 @@ import { Header } from "@/components/header"
 import { ModernFooter } from "@/components/footer"
 import { Toaster } from "@/components/ui/toaster"
 import { ConditionalHomeButton } from "@/components/ConditionalHomeButton"
+import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = {
   title: "Flash Services 78 - Rénovation Tous Corps d'État | Boulogne-Billancourt",
@@ -33,20 +34,50 @@ export const metadata: Metadata = {
   }
 }
 
+import { Preloader } from "@/components/ui/preloader"
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr" suppressHydrationWarning>
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#06b6d4" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Flash Services" />
+        <link rel="apple-touch-icon" href="/images/logo-header.jpg" />
+      </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <Header />
-        <ConditionalHomeButton />
-        <Suspense fallback={null}>{children}</Suspense>
-        <ModernFooter />
-        <Toaster />
-        <Analytics />
+        <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light" disableTransitionOnChange>
+          <Preloader />
+          <Header />
+          <ConditionalHomeButton />
+          <Suspense fallback={null}>{children}</Suspense>
+
+          <ModernFooter />
+          <Toaster />
+          <Analytics />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                if ('serviceWorker' in navigator) {
+                  window.addEventListener('load', function() {
+                    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                      console.log('SW registered: ', registration);
+                    }).catch(function(registrationError) {
+                      console.log('SW registration failed: ', registrationError);
+                    });
+                  });
+                }
+              `,
+            }}
+          />
+        </ThemeProvider>
       </body>
     </html>
   )

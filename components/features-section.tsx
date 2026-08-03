@@ -50,29 +50,29 @@ export function FeaturesSection() {
   }, [])
 
   return (
-    <section className="py-20 md:py-32 bg-gradient-to-r from-indigo-950 via-blue-950 to-purple-950 overflow-hidden">
+    <section className="py-12 md:py-16 bg-white dark:bg-slate-900 overflow-hidden transition-colors duration-300">
       <div className="container px-4 relative z-10">
         <div className="grid md:grid-cols-2 gap-12">
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              ref={(el) => {itemRefs.current[index] = el}}
+              ref={(el) => { itemRefs.current[index] = el }}
               initial={{ opacity: 0, y: 30 }}
               animate={visibleItems[index] ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.2, duration: 0.7 }}
               className="relative group cursor-pointer"
             >
               {/* Glassmorphism Card */}
-              <div className="p-6 rounded-3xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-2xl hover:scale-105 hover:shadow-blue-500/50 transition-transform duration-500">
-                <div className="w-16 h-16 bg-gradient-to-tr from-cyan-400 to-blue-500 rounded-full flex items-center justify-center mb-4 shadow-lg">
-                  <feature.icon className="h-8 w-8 text-white" />
+              <div className="p-6 rounded-3xl bg-white dark:bg-white/10 backdrop-blur-lg border border-slate-200 dark:border-white/20 shadow-xl hover:scale-105 hover:shadow-blue-500/20 dark:hover:shadow-blue-500/50 transition-all duration-500">
+                <div className="w-16 h-16 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-full flex items-center justify-center mb-4 shadow-lg text-white">
+                  <feature.icon className="h-8 w-8" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">{feature.title}</h3>
-                <p className="text-gray-300 text-lg">{feature.description}</p>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">{feature.title}</h3>
+                <p className="text-slate-600 dark:text-gray-300 text-lg">{feature.description}</p>
               </div>
 
               {/* Subtle floating glow */}
-              <div className="absolute -top-5 -left-5 w-20 h-20 bg-cyan-500/20 rounded-full blur-2xl opacity-50 animate-blob"></div>
+              {/* Removed glow */}
             </motion.div>
           ))}
         </div>

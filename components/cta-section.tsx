@@ -24,11 +24,10 @@ export function CTASection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 md:py-32 bg-gradient-to-br from-indigo-950 via-blue-950 to-purple-950 overflow-hidden"
+      className="relative py-12 md:py-16 bg-white dark:bg-slate-900 overflow-hidden transition-colors duration-300"
     >
       {/* Animated glowing blobs */}
-      <div className="absolute top-[-100px] left-[-100px] w-72 h-72 bg-blue-500/30 rounded-full blur-3xl animate-blob"></div>
-      <div className="absolute bottom-[-80px] right-[-100px] w-72 h-72 bg-purple-500/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+      {/* Removed blobs */}
 
       <div className="container px-4 text-center relative z-10">
         <motion.div
@@ -41,7 +40,7 @@ export function CTASection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-sm text-cyan-400 font-medium tracking-wide uppercase"
+            className="text-sm text-blue-700 dark:text-blue-400 font-medium tracking-wide uppercase"
           >
             Une Équipe d'Experts à Vos Côtés
           </motion.p>
@@ -50,7 +49,7 @@ export function CTASection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.4, duration: 0.7 }}
-            className="text-4xl md:text-5xl font-extrabold text-white tracking-tight drop-shadow-lg"
+            className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight drop-shadow-lg"
           >
             Vous êtes entre de bonnes mains
           </motion.h2>
@@ -59,7 +58,7 @@ export function CTASection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.6, duration: 0.7 }}
-            className="text-gray-200 text-lg md:text-xl leading-relaxed drop-shadow-sm"
+            className="text-slate-600 dark:text-gray-200 text-lg md:text-xl leading-relaxed drop-shadow-sm"
           >
             Un projet réussi vous demande, certes un excellent artisan mais surtout un bon accompagnement. Chez Flash
             Services 78, l'humain, la proximité, l'écoute sont au cœur de nos priorités. Un problème ? Nos équipes sont
@@ -72,7 +71,7 @@ export function CTASection() {
             transition={{ delay: 0.8, duration: 0.7 }}
           >
             <Link href="/contact">
-              <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-4 rounded-xl shadow-2xl hover:scale-105 transition-all duration-500">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl shadow-xl hover:scale-105 transition-all duration-500">
                 Demander mon devis →
               </Button>
             </Link>

@@ -39,7 +39,7 @@ export function ServicesSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-20 bg-gradient-to-br from-indigo-950 via-blue-950 to-purple-950">
+    <section ref={sectionRef} className="py-20 bg-slate-900">
       <div className="container px-4 relative z-10">
         <div className="grid md:grid-cols-2 gap-12">
           {services.map((service, index) => (

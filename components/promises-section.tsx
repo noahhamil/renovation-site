@@ -1,97 +1,123 @@
 "use client"
 
-import React, { useState, useEffect, useRef } from "react"
-import { Clock, Users, Shield, Award } from "lucide-react"
-import { motion } from "framer-motion"
+import React, { useRef } from "react"
+import { Clock, Users, Shield, Award, CheckCircle2 } from "lucide-react"
+import { motion, useInView } from "framer-motion"
 
 export function ModernPromisesSection() {
-  const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
 
   const promises = [
     {
       icon: Clock,
-      title: "Estimation gratuite",
-      description: "Devis détaillé gratuit, définition du temps et du budget",
-      color: "from-blue-500 to-cyan-500"
+      title: "Estimation Gratuite",
+      description: "Recevez une estimation détaillée et transparente sous 24h. Pas de surprise, tout est clair dès le départ.",
+      gradient: "from-blue-500 to-cyan-500",
+      delay: 0
     },
     {
       icon: Users,
-      title: "Les meilleurs artisans",
-      description: "Sélectionnés, contrôlés pour votre projet",
-      color: "from-cyan-500 to-blue-500"
+      title: "Artisans d'Elite",
+      description: "Une sélection rigoureuse des meilleurs experts de votre région. Qualité, ponctualité et savoir-fair garantis.",
+      gradient: "from-cyan-500 to-teal-500",
+      delay: 0.1
     },
     {
       icon: Shield,
-      title: "Simple et sécurisé",
-      description: "Signature électronique et paiements sécurisés",
-      color: "from-blue-600 to-cyan-600"
+      title: "Sécurité Totale",
+      description: "Vos acomptes sont sécurisés et votre chantier est assuré. Nous veillons à votre tranquillité d'esprit.",
+      gradient: "from-indigo-500 to-blue-600",
+      delay: 0.2
     },
     {
       icon: Award,
-      title: "Une équipe d'experts",
-      description: "Chez un interlocuteur privilégié",
-      color: "from-cyan-600 to-blue-600"
+      title: "Expertise Reconnue",
+      description: "Un interlocuteur unique dédié à votre projet pour un suivi personnalisé de la conception à la livraison.",
+      gradient: "from-purple-500 to-pink-500",
+      delay: 0.3
     }
   ]
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true)
-      },
-      { threshold: 0.1 }
-    )
-
-    if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
-  }, [])
-
   return (
-    <section ref={sectionRef} className="py-24 relative overflow-hidden bg-gradient-to-br from-indigo-950 via-blue-950 to-purple-950">
-      {/* Subtle floating lights */}
-      <div className="absolute top-[-50px] left-[-50px] w-60 h-60 bg-cyan-500/20 rounded-full blur-3xl animate-blob"></div>
-      <div className="absolute bottom-[-50px] right-[-50px] w-60 h-60 bg-purple-500/20 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+    <section ref={sectionRef} className="py-12 lg:py-16 relative overflow-hidden bg-white dark:bg-slate-900 transition-colors duration-300">
+      {/* Background Ambience */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5 dark:opacity-10" />
+      </div>
 
-      <div className="container px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
-            Notre <span className="text-transparent bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text">Promesse</span>
-          </h2>
-          <p className="text-gray-300 text-xl max-w-2xl mx-auto">
-            Un engagement qualité pour votre tranquillité d'esprit
-          </p>
-        </motion.div>
+      <div className="container px-4 mx-auto relative z-10">
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Section Header */}
+        <div className="text-center mb-20 space-y-4 max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-white/10 text-cyan-600 dark:text-cyan-400 text-sm font-bold uppercase tracking-wider backdrop-blur-md shadow-lg"
+          >
+            <CheckCircle2 className="w-4 h-4" />
+            <span>Notre Engagement</span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 dark:text-white leading-tight"
+          >
+            Pourquoi nous faire <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 dark:from-cyan-400 dark:via-blue-500 dark:to-purple-500 animate-gradient-x">
+              confiance ?
+            </span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed"
+          >
+            Nous ne faisons pas que rénover des espaces, nous construisons des relations durables basées sur la qualité, la confiance et l'excellence.
+          </motion.p>
+        </div>
+
+        {/* Promises Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {promises.map((promise, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: index * 0.2, duration: 0.7 }}
-              className="group relative cursor-pointer"
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: promise.delay }}
+              className="group relative"
             >
-              <div className="relative p-8 rounded-3xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-2xl hover:scale-105 hover:shadow-cyan-500/50 transition-transform duration-500">
-                {/* Gradient icon circle */}
-                <div className={`mx-auto w-16 h-16 rounded-full bg-gradient-to-br ${promise.color} flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                  <promise.icon className="h-8 w-8 text-white" />
+              {/* Card Container */}
+              <div className="h-full p-8 rounded-[2rem] bg-white/80 dark:bg-slate-900/40 backdrop-blur-xl border border-slate-200 dark:border-white/5 hover:border-cyan-500/30 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/10 group-hover:bg-white dark:group-hover:bg-slate-800/60 shadow-lg dark:shadow-none">
+
+                {/* Icon Halo */}
+                <div className="relative w-16 h-16 mb-6">
+                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${promise.gradient} opacity-20 blur-lg group-hover:opacity-40 transition-opacity duration-500`} />
+                  <div className={`relative w-full h-full rounded-2xl bg-gradient-to-br ${promise.gradient} flex items-center justify-center shadow-inner border border-white/20 group-hover:scale-110 transition-transform duration-500`}>
+                    <promise.icon className="w-8 h-8 text-white drop-shadow-md" />
+                  </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors duration-300">{promise.title}</h3>
-                <p className="text-gray-300 leading-relaxed">{promise.description}</p>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300">
+                  {promise.title}
+                </h3>
 
-                {/* Hover gradient glow */}
-                <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${promise.color} opacity-0 group-hover:opacity-50 transition-opacity duration-500 blur-xl -z-10`} />
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors duration-300">
+                  {promise.description}
+                </p>
+
+                {/* Bottom Shine */}
+                <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   )

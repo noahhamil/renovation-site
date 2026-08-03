@@ -66,39 +66,39 @@ export default function RenovationEnergetiquePage() {
   ];
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden bg-white dark:bg-slate-900 transition-colors duration-300">
       {/* Background */}
       <div className="fixed inset-0 -z-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800" />
+        <div className="absolute inset-0 bg-white dark:bg-slate-900 transition-colors duration-300" />
       </div>
       <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-1/4 left-1/2 w-64 h-64 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '4s' }} />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-cyan-400/10 to-blue-400/10 dark:from-cyan-500/20 dark:to-blue-500/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-400/10 to-pink-400/10 dark:from-purple-500/20 dark:to-pink-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-1/4 left-1/2 w-64 h-64 bg-gradient-to-r from-emerald-400/10 to-teal-400/10 dark:from-emerald-500/20 dark:to-teal-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '4s' }} />
       </div>
 
       <main className="relative z-10 pt-20">
         {/* Hero */}
         <section className="py-20">
           <div className="container px-4 text-center">
-            <Badge variant="outline" className="mb-4 text-white border-white/20">Rénovation Énergétique</Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-              Améliorez l'<span className="text-cyan-400">efficacité énergétique</span> de votre logement
+            <Badge variant="outline" className="mb-4 text-cyan-700 border-cyan-500/20 bg-cyan-50 dark:text-white dark:border-white/20 dark:bg-transparent">Rénovation Énergétique</Badge>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-slate-900 dark:text-white">
+              Améliorez l'<span className="text-cyan-500 dark:text-cyan-400">efficacité énergétique</span> de votre logement
             </h1>
-            <p className="text-xl text-gray-300 mb-8">Réduisez vos factures d'énergie et augmentez le confort de votre habitat</p>
+            <p className="text-xl text-slate-600 dark:text-gray-300 mb-8">Réduisez vos factures d'énergie et augmentez le confort de votre habitat</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-cyan-600 hover:bg-cyan-700 text-white">
+              <Button size="lg" className="bg-cyan-600 hover:bg-cyan-700 text-white dark:bg-cyan-600 dark:hover:bg-cyan-700">
                 <Link href="/devis-travaux" className="flex items-center">Demander un devis gratuit </Link>
               </Button>
               <Link href="realisations">
-              <Button size="lg" variant="outline" className="border-white/20 ">Voir nos réalisations</Button>
-            </Link>
+                <Button size="lg" variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-100 dark:border-white/20 dark:text-white dark:hover:bg-white/10">Voir nos réalisations</Button>
+              </Link>
             </div>
           </div>
         </section>
 
         {/* Benefits */}
-        <section ref={benefitsRef} className="py-16 bg-gradient-to-br from-indigo-950 via-blue-950 to-purple-950">
+        <section ref={benefitsRef} className="py-16 bg-slate-50 dark:bg-slate-900">
           <div className="container px-4 grid md:grid-cols-3 gap-8">
             {benefits.map((item, i) => (
               <motion.div
@@ -107,18 +107,18 @@ export default function RenovationEnergetiquePage() {
                 animate={benefitsVisible ? { opacity: 1, y: 0 } : {}}
                 whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
                 transition={{ delay: i * 0.2, duration: 0.7 }}
-                className="p-6 rounded-3xl bg-white/10 border border-white/20 text-center"
+                className="p-6 rounded-3xl bg-white dark:bg-white/10 border border-slate-200 dark:border-white/20 text-center shadow-sm hover:shadow-lg transition-all"
               >
-                <item.icon className="h-12 w-12 mx-auto mb-4 text-cyan-400" />
-                <h3 className="text-white font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-300">{item.text}</p>
+                <item.icon className="h-12 w-12 mx-auto mb-4 text-cyan-500 dark:text-cyan-400" />
+                <h3 className="text-slate-900 dark:text-white font-semibold mb-2">{item.title}</h3>
+                <p className="text-slate-600 dark:text-gray-300">{item.text}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
         {/* Services */}
-        <section ref={servicesRef} className="py-16 bg-gradient-to-br from-indigo-950 via-blue-950 to-purple-950">
+        <section ref={servicesRef} className="py-16 bg-white dark:bg-slate-900">
           <div className="container px-4 grid md:grid-cols-2 gap-8">
             {services.map((item, i) => (
               <motion.div
@@ -127,21 +127,21 @@ export default function RenovationEnergetiquePage() {
                 animate={servicesVisible ? { opacity: 1, y: 0 } : {}}
                 whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
                 transition={{ delay: i * 0.2, duration: 0.7 }}
-                className="p-6 rounded-3xl bg-white/10 border border-white/20"
+                className="p-6 rounded-3xl bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 hover:shadow-lg transition-all"
               >
-                <item.icon className="h-8 w-8 mb-4 text-cyan-400" />
-                <h3 className="text-white font-semibold mb-3">{item.title}</h3>
-                <ul className="text-gray-300 text-sm space-y-1 mb-2">
+                <item.icon className="h-8 w-8 mb-4 text-cyan-500 dark:text-cyan-400" />
+                <h3 className="text-slate-900 dark:text-white font-semibold mb-3">{item.title}</h3>
+                <ul className="text-slate-600 dark:text-gray-300 text-sm space-y-1 mb-2">
                   {item.items.map((p, j) => <li key={j}>• {p}</li>)}
                 </ul>
-                <p className="text-gray-400 text-sm">{item.info}</p>
+                <p className="text-slate-500 dark:text-gray-400 text-sm">{item.info}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
         {/* Aides */}
-        <section ref={aidesRef} className="py-16 bg-gradient-to-br from-indigo-950 via-blue-950 to-purple-950">
+        <section ref={aidesRef} className="py-16 bg-slate-50 dark:bg-slate-900">
           <div className="container px-4 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {aides.map((aide, i) => (
               <motion.div
@@ -150,18 +150,18 @@ export default function RenovationEnergetiquePage() {
                 animate={aidesVisible ? { opacity: 1, y: 0 } : {}}
                 whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
                 transition={{ delay: i * 0.2, duration: 0.7 }}
-                className="p-6 rounded-3xl bg-white/10 border border-white/20 text-center"
+                className="p-6 rounded-3xl bg-white dark:bg-white/10 border border-slate-200 dark:border-white/20 text-center shadow-sm hover:shadow-lg"
               >
-                <Euro className="h-8 w-8 mx-auto mb-3 text-cyan-400" />
-                <h4 className="text-white font-semibold">{aide.title}</h4>
-                <p className="text-gray-300 text-sm mt-2">{aide.info}</p>
+                <Euro className="h-8 w-8 mx-auto mb-3 text-cyan-500 dark:text-cyan-400" />
+                <h4 className="text-slate-900 dark:text-white font-semibold">{aide.title}</h4>
+                <p className="text-slate-600 dark:text-gray-300 text-sm mt-2">{aide.info}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
         {/* Process */}
-        <section ref={processRef} className="py-16 bg-gradient-to-br from-indigo-950 via-blue-950 to-purple-950">
+        <section ref={processRef} className="py-16 bg-white dark:bg-slate-900">
           <div className="container px-4 grid md:grid-cols-4 gap-8">
             {process.map((step, i) => (
               <motion.div
@@ -170,27 +170,27 @@ export default function RenovationEnergetiquePage() {
                 animate={processVisible ? { opacity: 1, y: 0 } : {}}
                 whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
                 transition={{ delay: i * 0.2, duration: 0.7 }}
-                className="p-8 rounded-3xl bg-white/10 border border-white/20 text-center"
+                className="p-8 rounded-3xl bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 text-center hover:shadow-lg"
               >
                 <div className="w-12 h-12 bg-cyan-600 text-white flex items-center justify-center rounded-full mx-auto mb-4 font-bold">
                   {step.step}
                 </div>
-                <h3 className="text-white font-semibold">{step.title}</h3>
-                <p className="text-gray-300 text-sm mt-2">{step.info}</p>
+                <h3 className="text-slate-900 dark:text-white font-semibold">{step.title}</h3>
+                <p className="text-slate-600 dark:text-gray-300 text-sm mt-2">{step.info}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
         {/* CTA */}
-        <section className="py-20 text-white text-center">
-          <h2 className="text-3xl font-bold mb-4">Prêt à améliorer votre confort énergétique ?</h2>
-          <p className="text-xl mb-8 text-white/90">Contactez-nous pour un audit gratuit</p>
+        <section className="py-20 text-center">
+          <h2 className="text-3xl font-bold mb-4 text-slate-900 dark:text-white">Prêt à améliorer votre confort énergétique ?</h2>
+          <p className="text-xl mb-8 text-slate-600 dark:text-white/90">Contactez-nous pour un audit gratuit</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary">
+            <Button size="lg" variant="secondary" className="bg-cyan-600 hover:bg-cyan-700 text-white dark:bg-secondary dark:text-secondary-foreground">
               <Link href="/devis-travaux" className="flex items-center">Demander un audit gratuit</Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-black">06.10.17.11.05</Button>
+            <Button size="lg" variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-100 dark:border-white dark:text-white dark:hover:bg-white/10">06.10.17.11.05</Button>
           </div>
         </section>
       </main>

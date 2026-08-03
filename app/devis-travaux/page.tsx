@@ -112,22 +112,19 @@ export default function DevisTravauxPage() {
   ]
 
   return (
-    <div className="min-h-screen relative overflow-hidden text-white">
+    <div className="min-h-screen relative overflow-hidden bg-slate-50 dark:bg-slate-900 transition-colors duration-300 text-slate-900 dark:text-white">
       {/* Background */}
       <div className="fixed inset-0 -z-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(14,165,233,0.3),rgba(0,0,0,0))]" />
+        <div className="absolute inset-0 bg-slate-50 dark:bg-slate-900 transition-colors duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-transparent dark:from-black/50" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(14,165,233,0.1),rgba(0,0,0,0))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(14,165,233,0.3),rgba(0,0,0,0))]" />
       </div>
 
       {/* Floating orbs */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-1/4 left-1/2 w-64 h-64 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '4s' }} />
-        <div className="absolute top-20 right-20 w-4 h-4 bg-cyan-400/40 rotate-45 animate-bounce" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-40 left-20 w-6 h-6 bg-purple-400/40 rounded-full animate-bounce" style={{ animationDelay: '3s' }} />
-        <div className="absolute bottom-40 right-40 w-5 h-5 bg-emerald-400/40 rotate-12 animate-bounce" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 dark:from-cyan-500/20 dark:to-blue-500/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-pink-500/10 dark:from-purple-500/20 dark:to-pink-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-1/4 left-1/2 w-64 h-64 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 dark:from-emerald-500/20 dark:to-teal-500/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '4s' }} />
       </div>
 
       <style jsx global>{`
@@ -147,15 +144,15 @@ export default function DevisTravauxPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="animate-fade-in-up text-white">
-              <Badge variant="outline" className="mb-4 text-white">
+            <div className="animate-fade-in-up">
+              <Badge variant="outline" className="mb-4 text-slate-900 dark:text-white border-slate-300 dark:border-white/20">
                 <Calculator className="h-7 w-8 mr-2" />
                 Devis travaux
               </Badge>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance text-slate-900 dark:text-white">
                 Demandez votre <span className="text-primary">devis gratuit</span>
               </h1>
-              <p className="text-xl text-muted-foreground mb-8 text-pretty text-white">
+              <p className="text-xl text-slate-600 dark:text-muted-foreground mb-8 text-pretty">
                 Obtenez une estimation précise et personnalisée pour vos travaux de rénovation en moins de 48 heures.
               </p>
             </div>
@@ -167,10 +164,10 @@ export default function DevisTravauxPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900 dark:text-white">
               Comment ça <span className="text-primary">fonctionne</span> ?
             </h2>
-            <p className="text-lg text-muted-foreground text-white">Un processus simple et transparent pour votre devis</p>
+            <p className="text-lg text-slate-600 dark:text-muted-foreground">Un processus simple et transparent pour votre devis</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
@@ -180,11 +177,11 @@ export default function DevisTravauxPage() {
                 className="text-center animate-fade-in-up"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
+                <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 shadow-lg shadow-primary/25 hover:scale-110 transition-transform">
                   {index + 1}
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                <p className="text-muted-foreground text-white">{step.desc}</p>
+                <h3 className="text-xl font-semibold mb-2 text-slate-900 dark:text-white">{step.title}</h3>
+                <p className="text-slate-600 dark:text-gray-300">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -195,128 +192,129 @@ export default function DevisTravauxPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto  ">
-            <Card className="border-0 shadow-lg bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 text-white">
+            <Card className="border-0 shadow-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
               <CardHeader className="text-center">
                 <CardTitle className="text-2xl md:text-3xl">Formulaire de demande de devis</CardTitle>
-                <CardDescription className="text-lg">
+                <CardDescription className="text-lg text-slate-600 dark:text-gray-300">
                   Plus vous êtes précis, plus notre devis sera adapté à vos besoins
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6 ">
                 <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Prénom *</label>
-                    <Input name="firstName" placeholder="Votre prénom" required />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">Prénom *</label>
+                      <Input name="firstName" placeholder="Votre prénom" required className="bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800" />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">Nom *</label>
+                      <Input name="lastName" placeholder="Votre nom" required className="bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800" />
+                    </div>
                   </div>
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Nom *</label>
-                    <Input name="lastName" placeholder="Votre nom" required />
-                  </div>
-                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Email *</label>
-                    <Input name="email" type="email" placeholder="votre@email.com" required />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">Email *</label>
+                      <Input name="email" type="email" placeholder="votre@email.com" required className="bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800" />
+                    </div>
+                    <div>
+                      <Label className="text-sm font-medium mb-2 block">Téléphone *</Label>
+                      <Input name="phone" type="tel" placeholder="06 XX XX XX XX" required className="bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800" />
+                    </div>
                   </div>
+
                   <div>
-                    <Label className="text-sm font-medium mb-2 block">Téléphone *</Label>
-                    <Input name="phone" type="tel" placeholder="06 XX XX XX XX" required />
+                    <label className="text-sm font-medium mb-2 block">Adresse du projet *</label>
+                    <Input name="address" placeholder="Adresse complète des travaux" required className="bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800" />
                   </div>
-                </div>
 
-                <div>
-                  <label className="text-sm font-medium mb-2 block">Adresse du projet *</label>
-                  <Input name="address" placeholder="Adresse complète des travaux" required />
-                </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">Type de bien</label>
+                      <Select name="typeBien">
+                        <SelectTrigger className="bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800">
+                          <SelectValue placeholder="Sélectionnez" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="appartement">Appartement</SelectItem>
+                          <SelectItem value="maison">Maison</SelectItem>
+                          <SelectItem value="local">Local commercial</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">Surface (m²)</label>
+                      <Input name="surface" type="number" placeholder="Surface en m²" className="bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800" />
+                    </div>
+                  </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="text-sm font-medium mb-2 block">Type de bien</label>
-                    <Select name="typeBien">
-                      <SelectTrigger>
-                        <SelectValue placeholder="Sélectionnez" />
+                    <label className="text-sm font-medium mb-2 block">Services souhaités *</label>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                      {services.map((service, index) => (
+                        <div key={index} className="flex items-center space-x-2">
+                          <Checkbox id={`service-${index}`} name={`service-${index}`} className="border-slate-300 dark:border-slate-700 data-[state=checked]:bg-primary" />
+                          <label htmlFor={`service-${index}`} className="text-sm text-slate-700 dark:text-slate-300">
+                            {service}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Budget prévisionnel</label>
+                    <Select name="budget">
+                      <SelectTrigger className="bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800">
+                        <SelectValue placeholder="Sélectionnez votre budget" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="appartement">Appartement</SelectItem>
-                        <SelectItem value="maison">Maison</SelectItem>
-                        <SelectItem value="local">Local commercial</SelectItem>
+                        <SelectItem value="5000">Moins de 5 000€</SelectItem>
+                        <SelectItem value="10000">5 000€ - 10 000€</SelectItem>
+                        <SelectItem value="20000">10 000€ - 20 000€</SelectItem>
+                        <SelectItem value="50000">20 000€ - 50 000€</SelectItem>
+                        <SelectItem value="plus">Plus de 50 000€</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
+
                   <div>
-                    <label className="text-sm font-medium mb-2 block">Surface (m²)</label>
-                    <Input name="surface" type="number" placeholder="Surface en m²" />
+                    <label className="text-sm font-medium mb-2 block">Délai souhaité</label>
+                    <Select name="delai">
+                      <SelectTrigger className="bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800">
+                        <SelectValue placeholder="Quand souhaitez-vous commencer ?" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="urgent">Dès que possible</SelectItem>
+                        <SelectItem value="1mois">Dans le mois</SelectItem>
+                        <SelectItem value="3mois">Dans les 3 mois</SelectItem>
+                        <SelectItem value="6mois">Dans les 6 mois</SelectItem>
+                        <SelectItem value="flexible">Pas de contrainte</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
-                </div>
 
-                <div>
-                  <label className="text-sm font-medium mb-2 block">Services souhaités *</label>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                    {services.map((service, index) => (
-                      <div key={index} className="flex items-center space-x-2">
-                        <Checkbox id={`service-${index}`} name={`service-${index}`} />
-                        <label htmlFor={`service-${index}`} className="text-sm">
-                          {service}
-                        </label>
-                      </div>
-                    ))}
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Description détaillée du projet</label>
+                    <Textarea
+                      name="description"
+                      placeholder="Décrivez votre projet en détail : état actuel, travaux souhaités, contraintes particulières..."
+                      rows={5}
+                      className="bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800"
+                    />
                   </div>
-                </div>
 
-                <div>
-                  <label className="text-sm font-medium mb-2 block">Budget prévisionnel</label>
-                  <Select name="budget">
-                    <SelectTrigger>
-                      <SelectValue placeholder="Sélectionnez votre budget" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="5000">Moins de 5 000€</SelectItem>
-                      <SelectItem value="10000">5 000€ - 10 000€</SelectItem>
-                      <SelectItem value="20000">10 000€ - 20 000€</SelectItem>
-                      <SelectItem value="50000">20 000€ - 50 000€</SelectItem>
-                      <SelectItem value="plus">Plus de 50 000€</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="terms" name="terms" required className="border-slate-300 dark:border-slate-700 data-[state=checked]:bg-primary" />
+                    <label htmlFor="terms" className="text-sm text-slate-600 dark:text-slate-300">
+                      J'accepte d'être contacté par Flash Services 78 concernant ma demande *
+                    </label>
+                  </div>
 
-                <div>
-                  <label className="text-sm font-medium mb-2 block">Délai souhaité</label>
-                  <Select name="delai">
-                    <SelectTrigger>
-                      <SelectValue placeholder="Quand souhaitez-vous commencer ?" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="urgent">Dès que possible</SelectItem>
-                      <SelectItem value="1mois">Dans le mois</SelectItem>
-                      <SelectItem value="3mois">Dans les 3 mois</SelectItem>
-                      <SelectItem value="6mois">Dans les 6 mois</SelectItem>
-                      <SelectItem value="flexible">Pas de contrainte</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <label className="text-sm font-medium mb-2 block">Description détaillée du projet</label>
-                  <Textarea
-                    name="description"
-                    placeholder="Décrivez votre projet en détail : état actuel, travaux souhaités, contraintes particulières..."
-                    rows={5}
-                  />
-                </div>
-
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="terms" name="terms" required />
-                  <label htmlFor="terms" className="text-sm">
-                    J'accepte d'être contacté par Flash Services 78 concernant ma demande *
-                  </label>
-                </div>
-
-                <Button size="lg" className="w-full bg-primary hover:bg-primary/90" disabled={isLoading}>
-                  <FileText className="h-5 w-5 mr-2" />
-                  {isLoading ? 'Envoi en cours...' : 'Envoyer ma demande de devis'}
-                </Button>
+                  <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-white shadow-lg" disabled={isLoading}>
+                    <FileText className="h-5 w-5 mr-2" />
+                    {isLoading ? 'Envoi en cours...' : 'Envoyer ma demande de devis'}
+                  </Button>
                 </form>
               </CardContent>
             </Card>
@@ -328,16 +326,16 @@ export default function DevisTravauxPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Besoin d'aide pour remplir le formulaire ?</h2>
-            <p className="text-lg text-muted-foreground mb-8 text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900 dark:text-white">Besoin d'aide pour remplir le formulaire ?</h2>
+            <p className="text-lg text-slate-600 dark:text-muted-foreground mb-8">
               Contactez-nous directement, nous vous aiderons à définir votre projet
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center ">
-              <Button size="lg" variant="outline" className="bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900">
-                <Phone className="h-5 w-5 mr-2"  />
+              <Button size="lg" variant="outline" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white border-slate-200 dark:border-slate-700">
+                <Phone className="h-5 w-5 mr-2" />
                 06.10.17.11.05
               </Button>
-              <Button size="lg" variant="outline" className="bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 text-white">
+              <Button size="lg" variant="outline" className="bg-slate-900 text-white border-slate-900 dark:border-white hover:bg-slate-800 dark:hover:bg-white/10 dark:hover:text-white">
                 <Mail className="h-5 w-5 mr-2" />
                 sfs.78@outlook.fr
               </Button>
